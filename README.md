@@ -2,7 +2,7 @@
 
 **A digital gallery where final-year students pitch their projects to lecturers and industry partners**
 
-[Open the FYP-Showcase live demo](https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/)
+[Open the FYP-Showcase live demo](https://2026123045-airielsyaqier.github.io/FYP-Showcase/)
 
 **Group TryToCode:** Aiman, Airiel, Aleef, Khairul, and Adam
 
