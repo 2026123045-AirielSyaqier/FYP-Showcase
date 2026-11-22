@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecturer Grading</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <strong>FYP-Showcase</strong>
+  <nav><a href="index.html">Home</a><a href="lecturer-grade.html">Grading</a><a href="login.html">Logout</a></nav>
+</header>
+<main>
+  <span class="role lecturer">Lecturer</span>
+  <h1>Grade Project</h1>
+  <div class="card">
+    <h3>Smart Attendance System</h3>
+    <p>Student: Ahmad Faiz | Domain: IoT</p>
+    <label>Working Prototype (0-100) – weight 40%</label><input id="p" type="number" min="0" max="100" value="80" oninput="calc()">
+    <label>Report (0-100) – weight 30%</label><input id="r" type="number" min="0" max="100" value="70" oninput="calc()">
+    <label>Presentation (0-100) – weight 30%</label><input id="s" type="number" min="0" max="100" value="90" oninput="calc()">
+    <label>Comments</label><textarea rows="3"></textarea>
+    <p style="font-size:18px"><b>Final FYP Score: <span id="f">80.0</span></b></p>
+    <button>Save Grade Entry</button>
+  </div>
+
+  <h2>My Grade Entries</h2>
+  <table id="gradeEntries">
+    <tr><th>Project</th><th>Prototype</th><th>Report</th><th>Presentation</th><th>Final Score</th><th>Action</th></tr>
+    <tr>
+      <td>Smart Attendance System</td><td>80</td><td>70</td><td>90</td><td>80.0</td>
+      <td><button onclick="deleteRow(this, 'Delete grade entry for Smart Attendance System?')">Delete</button></td>
+    </tr>
+    <tr>
+      <td>Campus Chatbot</td><td>90</td><td>80</td><td>85</td><td>85.5</td>
+      <td><button onclick="deleteRow(this, 'Delete grade entry for Campus Chatbot?')">Delete</button></td>
+    </tr>
+  </table>
+
+  <script>
+    function calc() {
+      var p = parseFloat(document.getElementById('p').value) || 0;
+      var r = parseFloat(document.getElementById('r').value) || 0;
+      var s = parseFloat(document.getElementById('s').value) || 0;
+      document.getElementById('f').textContent = (p * 0.4 + r * 0.3 + s * 0.3).toFixed(1);
+    }
+    function deleteRow(btn, message) {
+      if (confirm(message)) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+    }
+    calc();
+  </script>
+</main>
+</body>
+</html>

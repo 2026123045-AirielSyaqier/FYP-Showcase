@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin - Publication Status</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <strong>FYP-Showcase</strong>
+  <nav><a href="index.html">Home</a><a href="admin-publish.html">Publications</a><a href="dashboard.html">Dashboard</a><a href="login.html">Logout</a></nav>
+</header>
+<main>
+  <span class="role admin">Admin</span>
+  <h1>Update Publication Status</h1>
+  <table id="projects">
+    <tr><th>Project</th><th>Student</th><th>Final Score</th><th>Status</th><th>Action</th></tr>
+    <tr>
+      <td>Smart Attendance System</td><td>Ahmad Faiz</td><td>80.0</td>
+      <td><select><option>PENDING</option><option selected>PUBLISHED</option><option>HIDDEN</option></select></td>
+      <td>
+        <button onclick="alert('Status updated')">Update</button>
+        <button onclick="deleteRow(this, 'Delete project Smart Attendance System? This cannot be undone.')">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Campus Chatbot</td><td>Nur Aisyah</td><td>85.5</td>
+      <td><select><option selected>PENDING</option><option>PUBLISHED</option><option>HIDDEN</option></select></td>
+      <td>
+        <button onclick="alert('Status updated')">Update</button>
+        <button onclick="deleteRow(this, 'Delete project Campus Chatbot? This cannot be undone.')">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Halal Food Finder</td><td>Wei Jie</td><td>72.0</td>
+      <td><select><option selected>PENDING</option><option>PUBLISHED</option><option>HIDDEN</option></select></td>
+      <td>
+        <button onclick="alert('Status updated')">Update</button>
+        <button onclick="deleteRow(this, 'Delete project Halal Food Finder? This cannot be undone.')">Delete</button>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    function deleteRow(btn, message) {
+      if (confirm(message)) {
+        var tr = btn.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+      }
+    }
+  </script>
+</main>
+</body>
+</html>

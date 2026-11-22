@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Project Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <strong>FYP-Showcase</strong>
+  <nav><a href="index.html">Home</a><a href="student-create-project.html">My Portfolio</a><a href="login.html">Logout</a></nav>
+</header>
+<main>
+  <span class="role student">Student</span>
+  <h1>Create Project Portfolio</h1>
+  <div class="card">
+    <label>Project Title</label><input type="text">
+    <label>Technology Domain</label>
+    <select><option>Web</option><option>Mobile</option><option>AI / ML</option><option>IoT</option></select>
+    <label>Description / Pitch</label><textarea rows="5"></textarea>
+    <label>Demo URL</label><input type="text" placeholder="https://">
+    <label>GitHub URL</label><input type="text" placeholder="https://github.com/...">
+    <label>Screenshots / Report (PDF)</label><input type="file">
+    <button>Submit Portfolio</button>
+  </div>
+  <div class="note">Saved projects start as PENDING until the admin publishes them.</div>
+
+  <h2>My Projects</h2>
+  <table id="myProjects">
+    <tr><th>Title</th><th>Domain</th><th>Status</th><th>Action</th></tr>
+    <tr>
+      <td>Smart Attendance System</td><td>IoT</td><td>PUBLISHED</td>
+      <td><button disabled title="Published projects cannot be deleted">Locked</button></td>
+    </tr>
+    <tr>
+      <td>Campus Chatbot</td><td>AI / ML</td><td>PENDING</td>
+      <td><button onclick="deleteRow(this, 'Delete project Campus Chatbot?')">Delete</button></td>
+    </tr>
+    <tr>
+      <td>Halal Food Finder</td><td>Mobile</td><td>PENDING</td>
+      <td><button onclick="deleteRow(this, 'Delete project Halal Food Finder?')">Delete</button></td>
+    </tr>
+  </table>
+  <div class="note">Students can only delete their own projects while the status is PENDING.</div>
+
+  <script>
+    function deleteRow(btn, message) {
+      if (confirm(message)) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+    }
+  </script>
+</main>
+</body>
+</html>

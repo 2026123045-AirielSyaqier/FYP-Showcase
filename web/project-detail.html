@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Detail</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <strong>FYP-Showcase</strong>
+  <nav><a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="login.html">Login</a></nav>
+</header>
+<main>
+  <span class="role guest">Guest</span>
+  <div id="notFound" class="card" style="display:none">
+    <p>Project not found.</p>
+    <a class="btn" href="gallery.html">Back to Gallery</a>
+  </div>
+  <div id="detail">
+    <h1 id="title"></h1>
+    <div class="card">
+      <div class="thumb" style="height:200px">Project banner / demo video</div>
+      <p><span class="tag" id="domain"></span> <span class="tag">Published</span></p>
+      <p><b>Student:</b> <span id="student"></span> &nbsp; <b>Supervisor:</b> <span id="supervisor"></span></p>
+      <h3>Description</h3>
+      <p id="description"></p>
+      <h3>Links</h3>
+      <p>Demo: <a id="demo" href="#"></a> | Source: <a id="source" href="#"></a></p>
+      <p><b>Views:</b> <span id="views"></span></p>
+      <a class="btn" href="gallery.html">Back to Gallery</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  var projects = {
+    "1": { title: "Smart Attendance System", domain: "IoT", student: "Ahmad Faiz", supervisor: "Dr. Lim",
+           description: "An RFID-based attendance system that records student presence and generates reports for lecturers.",
+           demo: "demo.example.com/attendance", source: "github.com/ahmadfaiz/smart-attendance", views: 321 },
+    "2": { title: "Campus Chatbot", domain: "AI / ML", student: "Nur Aisyah", supervisor: "Dr. Tan",
+           description: "A chatbot that answers student enquiries about timetables, fees and campus facilities around the clock.",
+           demo: "demo.example.com/chatbot", source: "github.com/nuraisyah/campus-chatbot", views: 275 },
+    "3": { title: "Halal Food Finder", domain: "Mobile", student: "Wei Jie", supervisor: "Dr. Farah",
+           description: "A mobile app that helps users locate halal-certified restaurants nearby, with reviews and opening hours.",
+           demo: "demo.example.com/halalfinder", source: "github.com/weijie/halal-food-finder", views: 198 }
+  };
+
+  var id = new URLSearchParams(window.location.search).get("id") || "1";
+  var p = projects[id];
+
+  if (!p) {
+    document.getElementById("detail").style.display = "none";
+    document.getElementById("notFound").style.display = "block";
+  } else {
+    document.title = p.title + " | FYP-Showcase";
+    document.getElementById("title").textContent = p.title;
+    document.getElementById("domain").textContent = p.domain;
+    document.getElementById("student").textContent = p.student;
+    document.getElementById("supervisor").textContent = p.supervisor;
+    document.getElementById("description").textContent = p.description;
+    document.getElementById("demo").textContent = p.demo;
+    document.getElementById("source").textContent = p.source;
+    document.getElementById("views").textContent = p.views;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Gallery</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <strong>FYP-Showcase</strong>
+  <nav><a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="login.html">Login</a></nav>
+</header>
+<main>
+  <span class="role guest">Guest</span>
+  <h1>Project Gallery</h1>
+  <div class="card">
+    <input type="text" id="q" placeholder="Search projects by title or keyword..." oninput="applyFilter()">
+    <label>Filter by technology domain</label>
+    <select id="domain" onchange="applyFilter()">
+      <option value="All">All</option>
+      <option value="Web">Web</option>
+      <option value="Mobile">Mobile</option>
+      <option value="AI / ML">AI / ML</option>
+      <option value="IoT">IoT</option>
+    </select>
+    <button type="button" onclick="applyFilter()">Search</button>
+  </div>
+
+  <div class="grid" id="projectGrid">
+    <div class="card" data-domain="IoT"><div class="thumb">Screenshot</div><h3>Smart Attendance System</h3><span class="tag">IoT</span><p>RFID-based attendance tracking.</p><p>Views: 320</p><a class="btn" href="project-detail.html?id=1">View</a></div>
+    <div class="card" data-domain="AI / ML"><div class="thumb">Screenshot</div><h3>Campus Chatbot</h3><span class="tag">AI / ML</span><p>Answers student enquiries 24/7.</p><p>Views: 275</p><a class="btn" href="project-detail.html?id=2">View</a></div>
+    <div class="card" data-domain="Mobile"><div class="thumb">Screenshot</div><h3>Halal Food Finder</h3><span class="tag">Mobile</span><p>Locate halal restaurants nearby.</p><p>Views: 198</p><a class="btn" href="project-detail.html?id=3">View</a></div>
+  </div>
+  <p id="empty" style="display:none">No projects match your search.</p>
+</main>
+
+<script>
+  function applyFilter() {
+    var q = document.getElementById("q").value.toLowerCase();
+    var d = document.getElementById("domain").value;
+    var cards = document.querySelectorAll("#projectGrid .card");
+    var shown = 0;
+    for (var i = 0; i < cards.length; i++) {
+      var matchText = cards[i].textContent.toLowerCase().indexOf(q) !== -1;
+      var matchDomain = (d === "All" || cards[i].getAttribute("data-domain") === d);
+      var show = matchText && matchDomain;
+      cards[i].style.display = show ? "" : "none";
+      if (show) { shown++; }
+    }
+    document.getElementById("empty").style.display = shown === 0 ? "block" : "none";
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  document.getElementById("q").value = params.get("q") || "";
+  document.getElementById("domain").value = params.get("domain") || "All";
+  applyFilter();
+</script>
+</body>
+</html>
